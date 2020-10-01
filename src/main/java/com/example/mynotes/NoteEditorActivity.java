@@ -15,7 +15,10 @@ import java.util.HashSet;
 public class NoteEditorActivity extends AppCompatActivity {
 
     int noteId;
-
+    Button save;
+    public void setSave(View view){
+        onBackPressed();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,7 @@ public class NoteEditorActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         noteId = intent.getIntExtra("noteId",-1);
-
+        save= findViewById(R.id.saveButton);
         if (noteId!=-1){
             editText.setText(MainActivity.notes.get(noteId));
         } else {
