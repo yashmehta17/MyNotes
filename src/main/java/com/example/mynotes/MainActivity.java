@@ -25,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<String> notes = new ArrayList<>();
     static ArrayAdapter arrayAdapter;
     SharedPreferences sharedPreferences;
-
+    
+    Button addNoteButton;
+    public void setAddNoteButton(View view){
+        Intent intent = new Intent(getApplicationContext(),NoteEditorActivity.class);
+        startActivity(intent);
+    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.mynotes", Context.MODE_PRIVATE);
         ListView listView = findViewById(R.id.listView);
-
+        addNoteButton= findViewById(R.id.addNoteButton);
         HashSet<String> set = (HashSet) sharedPreferences.getStringSet("notes",null);
 
         if (set == null){
